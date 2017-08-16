@@ -7,4 +7,8 @@ public interface ServerGroup {
 
     public String operateSystemCommad();
     
+    /**
+     * 限制并发个数：linux下限制20，windows下限制10 
+     */
+    public String limitAccess() throws LimitException;
 }
