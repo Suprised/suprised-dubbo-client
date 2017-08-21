@@ -31,6 +31,11 @@
      -->
     <dubbo:reference id="helloworldService" loadbalance="random" cluster="failover" retries="2" registry="multicastRegister" interface="com.suprised.dubbo.helloworld.HelloworldService"/>
     
+    <dubbo:reference id="asyncInvocationService" interface="com.suprised.dubbo.async.AsyncInvocationService" registry="multicastRegister" version="1.0.0">
+    	<dubbo:method name="asyncInvocation" async="true" />
+    	<dubbo:method name="syncInvocation" async="false"/>
+    </dubbo:reference>
+    
     <!-- 直连：点对点，避免启动注册中心（开发和测试时使用） -->
     <!-- <dubbo:reference id="helloworldService" url="dubbo://192.168.1.53:20880;dubbo://192.168.1.54:20880" interface="com.suprised.dubbo.helloworld.HelloworldService"/> -->
  
