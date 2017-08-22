@@ -31,9 +31,17 @@
      -->
     <dubbo:reference id="helloworldService" loadbalance="random" cluster="failover" retries="2" registry="multicastRegister" interface="com.suprised.dubbo.helloworld.HelloworldService"/>
     
+    <!-- 异步调用 -->
     <dubbo:reference id="asyncInvocationService" interface="com.suprised.dubbo.async.AsyncInvocationService" registry="multicastRegister" version="1.0.0">
     	<dubbo:method name="asyncInvocation" async="true" />
     	<dubbo:method name="syncInvocation" async="false"/>
+    </dubbo:reference>
+    
+    <!-- 事件通知 -->
+    <bean id="clientEvent" class="com.suprised.dubbo.event.impl.ClientEventImpl"/>
+    <dubbo:reference id="eventService" interface="com.suprised.dubbo.event.EventService" registry="multicastRegister">
+    	<dubbo:method name="invoca" onreturn="clientEvent.onreturn" onthrow="clientEvent.onthrow" />
+ 		<dubbo:method name="invocaThrowException" onreturn="clientEvent.onreturn" onthrow="clientEvent.onthrow" />
     </dubbo:reference>
     
     <!-- 直连：点对点，避免启动注册中心（开发和测试时使用） -->
