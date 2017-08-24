@@ -11,7 +11,7 @@
     <dubbo:application name="consumer-of-helloworld-app"  />
     
     <!-- 服务消费方全局参数配置 -->
-    <dubbo:consumer retries="3"/>
+    <dubbo:consumer retries="3" mock="true"/>
     
  	<!-- 支持多注册中心 -->
  	
