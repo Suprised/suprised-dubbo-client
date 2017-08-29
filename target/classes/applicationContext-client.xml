@@ -44,6 +44,9 @@
  		<dubbo:method name="invocaThrowException" onreturn="clientEvent.onreturn" onthrow="clientEvent.onthrow" />
     </dubbo:reference>
     
+    <!-- 多个消费者并行问题验证 -->
+    <dubbo:reference id="concurrentCollectionService" interface="com.suprised.dubbo.collection.ConcurrentCollectionService" registry="multicastRegister" version="1.0.0"/>
+    
     <!-- 直连：点对点，避免启动注册中心（开发和测试时使用） -->
     <!-- <dubbo:reference id="helloworldService" url="dubbo://192.168.1.53:20880;dubbo://192.168.1.54:20880" interface="com.suprised.dubbo.helloworld.HelloworldService"/> -->
  
