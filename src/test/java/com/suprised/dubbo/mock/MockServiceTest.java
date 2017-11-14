@@ -19,7 +19,7 @@ public class MockServiceTest {
         MockServiceTest test = (MockServiceTest) context.getBean("mockServiceTest");
         
         System.out.println(test.getService().invocMock("没有异常的调用"));
-        Thread.sleep(15000);// 断开服务端，使异常的时候的执行mock
+        Thread.sleep(15000);// 断开服务端，使异常的时候的执行mock(只是dubbo内部出现RcpException才会调用mock，内部报错不会调用)
         System.out.println(test.getService().invocMockThrowException("抛出RcpException的调用"));
     }
 
